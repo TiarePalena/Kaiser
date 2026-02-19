@@ -18,18 +18,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check
-app.get('/api/health', (req: Request, res: Response) => {
+app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'Server is running', timestamp: new Date() });
 });
 
 // Contact form endpoint
-app.post('/api/contact', (req: Request, res: Response) => {
+app.post('/api/contact', (req: Request, res: Response): void => {
   try {
     const { name, email, industry, message } = req.body;
 
     // Validación básica
     if (!name || !email || !industry || !message) {
-      return res.status(400).json({ error: 'All fields are required' });
+      res.status(400).json({ error: 'All fields are required' });
+      return;
     }
 
     // TODO: Guardar en base de datos o enviar email
@@ -45,15 +46,40 @@ app.post('/api/contact', (req: Request, res: Response) => {
   }
 });
 
-// Quoter endpoint (para después)
-app.post('/api/quoter', (req: Request, res: Response) => {
+// Quoter endpoint
+app.post('/api/quoter', (req: Request, res: Response): void => {
   try {
-    const { projectDetails } = req.body;
+    const { items, contact } = req.body;
 
-    // TODO: Implementar lógica de cotización
+    // Validación
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      res.status(400).json({ error: 'At least one product is required' });
+      return;
+    }
+    if (!contact || !contact.name || !contact.email || !contact.company || !contact.phone || !contact.industry) {
+      res.status(400).json({ error: 'Contact information is incomplete' });
+      return;
+    }
+
+    // Generate reference
+    const reference = `KQ-${Date.now().toString(36).toUpperCase()}`;
+
+    console.log('=== Nueva Cotización ===' );
+    console.log('Referencia:', reference);
+    console.log('Contacto:', contact);
+    console.log('Productos:', items.length);
+    items.forEach((item: any, i: number) => {
+      console.log(`  ${i + 1}. ${item.productTitle} x${item.quantity}`, item.selectedSpecs);
+    });
+
+    // TODO: Guardar en base de datos
+    // TODO: Enviar email al equipo de ventas
+    // TODO: Enviar confirmación al cliente
+
     res.json({
       success: true,
-      message: 'Quotation received. We will process it shortly.',
+      reference,
+      message: 'Cotización recibida. Nos contactaremos pronto.',
     });
   } catch (error) {
     console.error('Error in quoter endpoint:', error);
@@ -62,12 +88,12 @@ app.post('/api/quoter', (req: Request, res: Response) => {
 });
 
 // 404 handler
-app.use((req: Request, res: Response) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
 // Error handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Error:', err);
   res.status(500).json({ error: 'Internal server error' });
 });

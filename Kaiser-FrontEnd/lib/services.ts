@@ -26,11 +26,25 @@ export const contactService = {
 };
 
 export const quoterService = {
-  async generateQuote(projectDetails: any) {
+  async generateQuote(quoteData: {
+    items: Array<{
+      productId: string;
+      productTitle: string;
+      selectedSpecs: Record<string, string>;
+      quantity: number;
+      notes: string;
+    }>;
+    contact: {
+      name: string;
+      company: string;
+      email: string;
+      phone: string;
+      industry: string;
+      message: string;
+    };
+  }) {
     try {
-      const response = await api.post(API_ENDPOINTS.QUOTER, {
-        projectDetails,
-      });
+      const response = await api.post(API_ENDPOINTS.QUOTER, quoteData);
       return response.data;
     } catch (error) {
       console.error('Error generating quote:', error);
