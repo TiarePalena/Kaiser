@@ -36,7 +36,7 @@ export default function Capabilities() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Nuestras <span className="text-blue-400">Capacidades</span>
+            Nuestras <span className="text-blue-400">capacidades</span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Ofrecemos un ciclo completo de vida para sus activos industriales,
@@ -50,10 +50,10 @@ export default function Capabilities() {
             return (
               <div
                 key={idx}
-                className="bg-slate-800 border border-slate-700 rounded-lg p-8 hover:border-blue-500 transition duration-300 space-y-4"
+                className="bg-gradient-to-br from-slate-800 to-slate-900 border-l-4 border-blue-500 rounded-lg p-8 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-900/50 transition duration-500 transform hover:-translate-y-1 space-y-4"
               >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <Icon size={24} />
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center shadow-lg hover:shadow-blue-600/50 transition duration-300 transform hover:scale-110">
+                  <Icon size={28} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold">{cap.title}</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -61,7 +61,7 @@ export default function Capabilities() {
                 </p>
                 <a
                   href="#contact"
-                  className="inline-block text-blue-400 hover:text-blue-300 font-semibold text-sm pt-4"
+                  className="inline-block text-blue-400 hover:text-blue-300 font-semibold text-sm pt-4 hover:translate-x-1 transition duration-300"
                 >
                   Saber más →
                 </a>

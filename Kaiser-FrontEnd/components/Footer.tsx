@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { FiLinkedin, FiInstagram, FiFacebook } from 'react-icons/fi';
 
 export default function Footer() {
   return (
@@ -10,13 +12,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-kaiser-teal rounded flex items-center justify-center shadow-md">
-                <span className="text-kaiser-dark font-bold text-lg">K</span>
-              </div>
-              <div>
-                <span className="block font-bold text-white">Kaiser</span>
-                <span className="block text-xs text-kaiser-cyan">Ingeniería</span>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Kaiser Logo"
+                width={50}
+                height={50}
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-sm text-kaiser-light opacity-75">
               Soluciones de ingeniería de precisión para la gran industria.
@@ -103,16 +105,34 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
           <p className="text-kaiser-light opacity-70">
-            © 2024 Kaiser Ingeniería S.A. Todos los derechos reservados.
+            © 2026 Kaiser Ingeniería S.A. Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-kaiser-light hover:text-kaiser-teal transition duration-300">
+            <a 
+              href="https://www.facebook.com/profile.php?id=61587629696821&locale=es_LA" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-kaiser-light hover:text-kaiser-teal transition duration-300 flex items-center gap-2"
+            >
+              <FiFacebook size={20} />
               Facebook
             </a>
-            <a href="#" className="text-kaiser-light hover:text-kaiser-teal transition duration-300">
+            <a 
+              href="https://www.linkedin.com/company/kaiser-ingenieria/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-kaiser-light hover:text-kaiser-teal transition duration-300 flex items-center gap-2"
+            >
+              <FiLinkedin size={20} />
               LinkedIn
             </a>
-            <a href="#" className="text-kaiser-light hover:text-kaiser-teal transition duration-300">
+            <a 
+              href="https://www.instagram.com/kaiseringenieria_cl/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-kaiser-light hover:text-kaiser-teal transition duration-300 flex items-center gap-2"
+            >
+              <FiInstagram size={20} />
               Instagram
             </a>
           </div>

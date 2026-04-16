@@ -1,51 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { FiMapPin, FiMail, FiPhone, FiClock } from 'react-icons/fi';
-import { contactService } from '@/lib/services';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    industry: '',
-    message: '',
-  });
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setSubmitStatus('idle');
-
-    try {
-      await contactService.sendContact(formData);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', industry: '', message: '' });
-      
-      // Limpiar mensaje después de 5 segundos
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const contactInfo = [
     {
       icon: FiMapPin,
@@ -55,12 +12,7 @@ export default function Contact() {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'ventas@kaiseringenieria.cl',
-    },
-    {
-      icon: FiPhone,
-      label: 'Teléfono',
-      value: '+56 9 6371 1607',
+      value: 'aolguin@kaiseringenieria.cl',
     },
     {
       icon: FiClock,
@@ -83,7 +35,7 @@ export default function Contact() {
                 CONTACTO
               </p>
               <h2 className="text-4xl font-bold mt-4 mb-4">
-                Hablemos de su <span className="text-blue-600">Próximo Desafío</span>
+                Hablemos de su <span className="text-blue-600">Próximo desafío</span>
               </h2>
               <p className="text-gray-600">
                 Nuestras oficinas centrales están preparadas para recibir sus
@@ -114,18 +66,16 @@ export default function Contact() {
 
           {/* Right side - Contact form */}
           <div className="bg-gray-50 rounded-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action="https://formsubmit.co/aolguin@kaiseringenieria.cl" method="POST" className="space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-2">
                   NOMBRE COMPLETO
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  name="Nombre"
                   placeholder="Ej: Juan Pérez"
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition duration-300"
                   required
                 />
               </div>
@@ -136,11 +86,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  name="Email"
                   placeholder="juan@empresa.com"
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition duration-300"
                   required
                 />
               </div>
@@ -150,18 +98,16 @@ export default function Contact() {
                   INDUSTRIA
                 </label>
                 <select
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
+                  name="Industria"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition duration-300 appearance-none cursor-pointer"
                   required
                 >
                   <option value="">Seleccione una opción</option>
-                  <option value="petroquimica">Petroquímica</option>
-                  <option value="mineria">Minería</option>
-                  <option value="gasoil">Gas & Oil</option>
-                  <option value="energia">Energía</option>
-                  <option value="otra">Otra</option>
+                  <option value="Petroquímica">Petroquímica</option>
+                  <option value="Minería">Minería</option>
+                  <option value="Gas & Oil">Gas & Oil</option>
+                  <option value="Energía">Energía</option>
+                  <option value="Otra">Otra</option>
                 </select>
               </div>
 
@@ -170,35 +116,24 @@ export default function Contact() {
                   MENSAJE / REQUERIMIENTO
                 </label>
                 <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
+                  name="Mensaje"
                   placeholder="Describa brevemente su proyecto..."
                   rows={5}
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition resize-none"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition duration-300 resize-none"
                   required
                 ></textarea>
               </div>
 
+              {/* Hidden input para redirección después del envío */}
+              <input type="hidden" name="_next" value="https://localhost:3000/thank-you" />
+              <input type="hidden" name="_captcha" value="false" />
+
               <button
                 type="submit"
-                disabled={isLoading}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-3 rounded-lg transition duration-300"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 rounded-lg transition duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-600/30 transform hover:scale-105"
               >
-                {isLoading ? 'Enviando...' : 'ENVIAR MENSAJE'}
+                ENVIAR MENSAJE
               </button>
-
-              {submitStatus === 'success' && (
-                <div className="bg-green-50 border border-green-300 text-green-800 px-4 py-3 rounded-lg">
-                  ✓ Mensaje enviado correctamente. Nos contactaremos pronto.
-                </div>
-              )}
-
-              {submitStatus === 'error' && (
-                <div className="bg-red-50 border border-red-300 text-red-800 px-4 py-3 rounded-lg">
-                  ✕ Error al enviar el mensaje. Intenta de nuevo.
-                </div>
-              )}
             </form>
           </div>
         </div>

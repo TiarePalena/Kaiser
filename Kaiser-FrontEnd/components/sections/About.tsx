@@ -81,7 +81,7 @@ export default function About() {
             <div className="inline-block w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
               <FiAward size={32} />
             </div>
-            <h3 className="text-3xl font-bold mb-4">¿Por Qué Preferirnos?</h3>
+            <h3 className="text-3xl font-bold mb-4">¿Por qué Preferirnos?</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

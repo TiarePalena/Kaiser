@@ -12,31 +12,26 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/imagenes/banner.jpeg"
+          src="/imagenes/hero-background.jpg"
           alt="Kaiser Ingeniería Background"
           fill
           className="object-cover"
           priority
           quality={100}
         />
-        {/* Dark overlay para legibilidad */}
-        <div className="absolute inset-0 bg-slate-900 bg-opacity-75"></div>
+        {/* Dark overlay mejorado con gradiente */}
+        <div className="absolute inset-0 bg-slate-900 opacity-55"></div>
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="space-y-8">
-            <div className="inline-block">
-              <span className="bg-blue-600 bg-opacity-20 border border-blue-500 text-blue-300 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
-                LÍDERES EN LOGÍSTICA DE CARGA
-              </span>
-            </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl text-white">
               Ingeniería de{' '}
-              <span className="text-blue-400">Precisión</span> para la{' '}
-              <span className="text-blue-400">Gran Industria</span>
+              <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">precisión</span> para la{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">gran industria</span>
             </h1>
 
             <p className="text-xl text-gray-200 leading-relaxed max-w-lg drop-shadow-md">
@@ -48,13 +43,13 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="#products"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition duration-300 shadow-lg"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-600/50 transform hover:scale-105"
               >
                 Explorar Productos <FiArrowRight />
               </a>
               <a
                 href="#contact"
-                className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 backdrop-blur-sm"
+                className="border-2 border-white hover:bg-white hover:text-slate-900 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 backdrop-blur-sm transform hover:scale-105"
               >
                 Hablar con un Experto
               </a>

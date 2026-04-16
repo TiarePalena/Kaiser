@@ -26,7 +26,7 @@ export default function Products() {
         'Diversos tamaños',
         'Compatible con múltiples fluidos',
       ],
-      image: '/imagenes/Acople-Seco-ASK.jpg',
+      image: '/imagenes/Camlock GLP 2.jpg',
     },
     {
       id: 3,
@@ -80,8 +80,8 @@ export default function Products() {
             SUMINISTROS DE INGENIERÍA
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-            Equipamiento de Clase <span className="text-blue-600">Mundial</span>{' '}
-            para Entornos <span className="text-blue-600">Críticos</span>
+            Equipamiento de clase <span className="text-blue-600">mundial</span>{' '}
+            para entornos <span className="text-blue-600">críticos</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Nuestros productos están certificados bajo normativas internacionales
@@ -93,14 +93,14 @@ export default function Products() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 hover:border-blue-300"
+              className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl hover:border-blue-400 transition duration-500 transform hover:-translate-y-2 group"
             >
               {/* Product image */}
-              <div className="h-40 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
+              <div className="h-40 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden relative">
                 <img 
                   src={product.image} 
                   alt={product.title}
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />
               </div>
 
@@ -127,9 +127,10 @@ export default function Products() {
                   ))}
                 </ul>
 
-                <button className="w-full text-blue-600 hover:text-blue-700 font-semibold text-sm pt-4 border-t border-gray-200">
+                {/* Ver Especificaciones - Próximamente */}
+                {/* <button className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold text-sm pt-4 border-t border-gray-200 transition duration-300 py-3 rounded-b">
                   Ver Especificaciones →
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

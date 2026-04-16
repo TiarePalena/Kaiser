@@ -60,7 +60,7 @@ export default function WhyChooseUs() {
             VENTAJAS COMPETITIVAS
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-            ¿Por Qué <span className="text-blue-600">Preferirnos</span>?
+            ¿Por qué <span className="text-blue-600">preferirnos</span>?
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Nuestro compromiso es brindar soluciones de clase mundial con el
@@ -74,10 +74,10 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-lg p-8 space-y-4 hover:shadow-lg transition duration-300"
+                className="bg-white rounded-xl p-8 space-y-4 hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-gray-100 hover:border-blue-200"
               >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <Icon size={24} className="text-white" />
+                <div className="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center shadow-lg transition duration-300 hover:scale-110 transform border-2 border-blue-200">
+                  <Icon size={36} className="text-blue-600" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900">
                   {reason.title}

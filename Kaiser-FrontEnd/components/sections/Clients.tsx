@@ -25,7 +25,7 @@ export default function Clients() {
             NUESTROS CLIENTES
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-            Confían en <span className="text-blue-600">Nuestra Experiencia</span>
+            Confían en <span className="text-blue-600">nuestra experiencia</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Trabajamos con las empresas más importantes de la industria minera
