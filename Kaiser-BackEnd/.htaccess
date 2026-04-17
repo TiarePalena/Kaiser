@@ -1,0 +1,5 @@
+# Redirección para API en subdominio
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(.*)$ http://localhost:5000/$1 [P,L]
+</IfModule>

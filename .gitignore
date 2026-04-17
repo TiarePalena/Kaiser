@@ -28,6 +28,9 @@ build/
 .env.local
 .env.*.local
 
+# Mantener archivos de producción pero no subirlos con datos sensibles
+# .env.production
+
 # ==========================================
 # EDITORES Y IDEs
 # ==========================================

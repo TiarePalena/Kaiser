@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.kaiseringenieria.cl/api';
 
 export const API_ENDPOINTS = {
   HEALTH: `${API_BASE_URL}/health`,

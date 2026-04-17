@@ -125,7 +125,7 @@ export default function Contact() {
               </div>
 
               {/* Hidden input para redirección después del envío */}
-              <input type="hidden" name="_next" value="https://localhost:3000/thank-you" />
+              <input type="hidden" name="_next" value="https://kaiseringenieria.cl/thank-you" />
               <input type="hidden" name="_captcha" value="false" />
 
               <button
